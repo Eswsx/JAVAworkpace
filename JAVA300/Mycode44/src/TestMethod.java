@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 /**
  * 测试方法的基本使用
+ * 函数重载
+ * 如何输入
  * @author Es无语中
  *
  */
@@ -37,11 +39,13 @@ public class TestMethod {
 		return sum;
 	}
 	//方法重载
+	//可加staic将可以不new
 	int add(int a,int b){
 		int sum;
 		sum = a +b;
 		return sum;
 	}
+	
 	
 	
 }
