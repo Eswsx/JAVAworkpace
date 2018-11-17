@@ -5,12 +5,17 @@
  *
  */
 class Point {
-	double x,y;
+	double x,y,z;
 	
 	//构造函数和类名必须保持一致
 	public Point(double _x,double _y){
 		x = _x;
 		y = _y;
+	}
+	Point(double x,double y,double z){
+		this(x,y);
+		this.z = z;
+		 
 	}
 
 	public double getDistance(Point p){
