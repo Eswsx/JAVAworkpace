@@ -10,6 +10,10 @@ public class TestEncapsulation {
 		//h.age = 13;
 		h.name = "ะกร๗";
 		h.height = 230;
+		
+		Person4Encapsulation p4 = new Person4Encapsulation();
+//		p4.age = 14;
+		p4.setAge(14);
 	}
 
 }
