@@ -9,3 +9,9 @@ public class TestEncapsulation2 {
 //		h.name = "小明";//name为default属性，不能被不同包的类访问
 	}
 }
+
+class girl extends Human{
+	void sayGood(){
+		System.out.println(height);
+	}
+}
