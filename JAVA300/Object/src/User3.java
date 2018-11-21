@@ -10,7 +10,7 @@ public class User3 {
 	String pwd;
 	static String company;
 	
-	static{
+	static{//在项目启动的时候就初始化
 		System.out.println("执行类的初始化工作");
 		company = "宇宙有限公司";
 		printCompany();
