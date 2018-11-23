@@ -16,26 +16,37 @@ import javax.swing.JFrame;
  */
 public class MyGameFrame extends JFrame {
 	
-	Image ball = GameUtil.getImage("Images/ball.png");
+	Image bg = GameUtil.getImage("Images/bg.png");
+	Image plane = GameUtil.getImage("Images/plane.png");
+	
+	int planeX = 250;
+	int planeY = 250;
 	
 	@Override
 	public void paint(Graphics g) {//自动被调用 g相当于一只画笔
-		Color c = g.getColor();
-		Font f = g.getFont();
+		g.drawImage(bg, 0, 0, null);
+		g.drawImage(plane, planeX, planeY, null);
+		planeX++;
 		
-		g.setColor(Color.BLUE);
-		g.drawLine(100,100,300,300);
-		g.drawRect(100,100,300,300);
-		g.drawOval(100, 100, 300, 300);
-		g.fillRect(100, 100, 40, 40);
-		g.setColor(Color.red);
-		g.setFont(new Font("宋体",Font.BOLD,50));
-		g.drawString("我是谁？？", 200, 200);
-		
-		g.drawImage(ball,250,250,null);
-		
-		g.setColor(c);
-		g.setFont(f);
+
+	}
+	
+	//帮助我们反复重画窗口
+	class PaintThread extends Thread{
+		@Override
+		public void run() {
+			while(true){
+				System.out.println("窗口画一次");
+				repaint();//重画
+				
+				try {
+					Thread.sleep(40);//1s = 1000ms
+				} catch (InterruptedException e) {
+					
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 	/**
 	 * 初始化窗口
@@ -52,6 +63,8 @@ public class MyGameFrame extends JFrame {
 				System.exit(0);
 			}
 		});
+		
+		new PaintThread().start();//启动重画窗口的线程
 	}
 	
 	public static void main(String[] args){
