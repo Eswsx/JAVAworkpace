@@ -15,7 +15,19 @@ import javax.swing.JFrame;
  *
  */
 public class MyGameFrame extends JFrame {
+	//添加双缓冲技术
+	private Image offScreenImage = null;
 	
+	public void update(Graphics g){
+		if(offScreenImage == null){
+			offScreenImage = this.createImage(500,500);//游戏窗口的宽度和高度
+		}
+		Graphics gOff = offScreenImage.getGraphics();
+		paint(gOff);
+		g.drawImage(offScreenImage, 0, 0, null);
+		System.out.println(1);
+	}
+	//
 	Image bg = GameUtil.getImage("Images/bg.png");
 	Image plane = GameUtil.getImage("Images/plane.png");
 	
