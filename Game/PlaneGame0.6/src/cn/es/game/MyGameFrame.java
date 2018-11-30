@@ -67,12 +67,14 @@ public class MyGameFrame extends JFrame {
 
 		@Override
 		public void keyPressed(KeyEvent e) {
-			 System.out.println("按下：" + e.getKeyCode());
+//			 System.out.println("按下：" + e.getKeyCode());
+			plane.addDirection(e);
 		}
 
 		@Override
 		public void keyReleased(KeyEvent e) {
-			System.out.println("抬起：" + e.getKeyCode());
+//			System.out.println("抬起：" + e.getKeyCode());
+			plane.minusDirection(e);
 		}
 		
 	}
