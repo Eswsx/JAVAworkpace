@@ -2,6 +2,7 @@ package cn.es.game;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
@@ -16,7 +17,7 @@ import javax.swing.JFrame;
  * @author Es无语中
  *
  */
-public class MyGameFrame extends JFrame {
+public class MyGameFrame extends Frame {
 	//添加双缓冲技术
 	private Image offScreenImage = null;
 	
@@ -27,22 +28,33 @@ public class MyGameFrame extends JFrame {
 		Graphics gOff = offScreenImage.getGraphics();
 		paint(gOff);
 		g.drawImage(offScreenImage, 0, 0, null);
-		System.out.println(1);
+//		System.out.println(1);
 	}
 	//
 	Image bg = GameUtil.getImage("Images/bg.png");
 	Image planeImg = GameUtil.getImage("Images/plane.png");
 	
 	Plane plane = new Plane(planeImg,250,250);
-	Shell shell = new Shell();
+	Shell[] shells = new Shell[50]; 
 	
 	@Override
 	public void paint(Graphics g) {//自动被调用 g相当于一只画笔
 		g.drawImage(bg, 0, 0, null);
 
 		plane.drawSelf(g);//画飞机
+		//画所有炮弹
 		
-		shell.draw(g);
+		for(int i=0;i<shells.length;i++){
+			shells[i].draw(g);
+			//飞机和炮弹的碰撞检测
+			boolean peng = shells[i].getRect().intersects(plane.getRect());
+			if(peng){
+				plane.live = false;
+//			System.out.println("相撞！！");
+			}
+			
+		}
+//		shell.draw(g);
 
 	}
 	
@@ -88,7 +100,7 @@ public class MyGameFrame extends JFrame {
 	public void launchFrame(){
 		this.setTitle("Es无语中");
 		this.setVisible(true);
-		this.setSize(Constant.GAME_WIDTH,Constant.GAME_HEIGHT);
+		this.setSize(Constant.GAME_WIDTH+8,Constant.GAME_HEIGHT+8);//为了完整显示背景故加8
 		this.setLocation(300,300);
 		
 		this.addWindowListener(new WindowAdapter(){
@@ -100,6 +112,11 @@ public class MyGameFrame extends JFrame {
 		
 		new PaintThread().start();//启动重画窗口的线程
 		addKeyListener(new KeyMonitor());//给窗口增加键盘监听
+		
+		//初始化50个炮弹
+		for(int i=0;i<shells.length;i++){
+			shells[i] = new Shell();
+		}
 	}
 	
 	public static void main(String[] args){////////////////////////////////////////////////////
