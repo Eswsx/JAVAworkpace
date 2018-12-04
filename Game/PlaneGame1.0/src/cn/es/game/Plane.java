@@ -5,9 +5,7 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 
 public class Plane extends GameObject{
-	
-	boolean left,up,right,down;
-	
+	boolean left,up,right,down;	
 	boolean live = true;
 	
 	public void drawSelf(Graphics g){
@@ -47,6 +45,5 @@ public class Plane extends GameObject{
 				case KeyEvent.VK_DOWN: down = false;break;
 				default:break;
 			}
-		}
-		
+		}	
 }

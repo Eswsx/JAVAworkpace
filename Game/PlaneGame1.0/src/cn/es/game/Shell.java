@@ -8,7 +8,6 @@ import java.awt.Graphics;
  * @author Es无语中
  *
  */
-
 public class Shell extends GameObject{
 	double degree;
 	
@@ -20,11 +19,11 @@ public class Shell extends GameObject{
 		speed = 3;
 		degree = Math.random()*Math.PI*2;
 	}
+	
 	public void draw(Graphics g){
 		Color c = g.getColor();
 		g.setColor(Color.YELLOW);
 		g.fillOval((int)x,(int) y, width, height);
-		
 		//炮弹沿任意角度飞行
 		x += speed*Math.cos(degree);
 		y += speed*Math.sin(degree);
@@ -37,5 +36,4 @@ public class Shell extends GameObject{
 		}
 		g.setColor(c);
 	}
-
 }

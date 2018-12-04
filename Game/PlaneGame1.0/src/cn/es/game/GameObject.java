@@ -37,7 +37,6 @@ public class GameObject {
 		this.y = y;
 	}
 	public GameObject(){
-		
 	}
 	/**
 	 * 返回物体所在的矩形，便于后续的碰撞检测

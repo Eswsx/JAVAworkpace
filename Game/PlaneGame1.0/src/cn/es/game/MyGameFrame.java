@@ -73,14 +73,10 @@ public class MyGameFrame extends Frame {
 					g.setFont(f);
 					g.drawString("时间："+period+"秒", 100, 100);
 					}
-			
-			
 		}
 		g.setColor(c);
 //		shell.draw(g);
-
 	}
-	
 	//帮助我们反复重画窗口
 	class PaintThread extends Thread{
 		@Override
@@ -92,7 +88,6 @@ public class MyGameFrame extends Frame {
 				try {
 					Thread.sleep(40);//1s = 1000ms
 				} catch (InterruptedException e) {
-					
 					e.printStackTrace();
 				}
 			}
@@ -100,23 +95,17 @@ public class MyGameFrame extends Frame {
 	}
 	//定义键盘监听的内部类
 	class KeyMonitor extends KeyAdapter{
-
 		@Override
 		public void keyPressed(KeyEvent e) {
 //			 System.out.println("按下：" + e.getKeyCode());
 			plane.addDirection(e);
 		}
-
 		@Override
 		public void keyReleased(KeyEvent e) {
 //			System.out.println("抬起：" + e.getKeyCode());
 			plane.minusDirection(e);
 		}
-		
 	}
-	
-	
-	
 	/**
 	 * 初始化窗口
 	 */
@@ -135,7 +124,6 @@ public class MyGameFrame extends Frame {
 		
 		new PaintThread().start();//启动重画窗口的线程
 		addKeyListener(new KeyMonitor());//给窗口增加键盘监听
-		
 		//初始化50个炮弹
 		for(int i=0;i<shells.length;i++){
 			shells[i] = new Shell();

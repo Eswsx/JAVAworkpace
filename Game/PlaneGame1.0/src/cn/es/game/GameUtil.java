@@ -9,10 +9,8 @@ import javax.imageio.ImageIO;
 
 public class GameUtil {
 //工具类最好将构造器私有化
-	private GameUtil(){
-		
+	private GameUtil(){	
 	}
-	
 	/**
 	 * 返回指定路径文件的图片对象
 	 * @param path
@@ -29,5 +27,4 @@ public class GameUtil {
 		}
 		return bi;
 	}
-	
 }
