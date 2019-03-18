@@ -1,5 +1,7 @@
 package cn.es.array2;
 
+import java.util.Arrays;
+
 public class Matrix {
 	/**
 	 * 
@@ -53,6 +55,7 @@ public class Matrix {
 		}
 //		System.out.println(c[0][0]+"\t"+c[0][1]);
 //		System.out.println(c[1][0]+"\t"+c[1][1]);
-//		
+//	
+		System.out.println(Arrays.toString(a));
 	}
 }
