@@ -1,6 +1,6 @@
 package cn.wsx.test;
 /**
- * 包装类的使用
+ * 测试包装类的基本用法
  * @author Es无语中
  *
  */
