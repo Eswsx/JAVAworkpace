@@ -36,10 +36,11 @@ public class VisualCanlendar {
 				System.out.print("\t");
 			}
 			for(int i=1;i<maxDate;i++){
-				if(i == day){
-					System.out.print("*");
-				}
-					System.out.print(i+"\t");
+					System.out.print(i);
+					if(i == day){
+						System.out.print("*");
+					}
+					System.out.print("\t");
 					int w = calendar.get(Calendar.DAY_OF_WEEK);
 					if(w == Calendar.SATURDAY){
 						System.out.print("\n");
