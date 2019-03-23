@@ -1,5 +1,7 @@
 package cn.wsx.Exception;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import com.sun.xml.internal.ws.api.message.saaj.SAAJFactory;
@@ -27,6 +29,15 @@ public class TestException {
 		
 //		String str  = "1234abcd";
 //		Integer i = new Integer(str);
+		
+		File f = new File("D:/JAVAworkpace/JAVA300/tt.txt");
+		if(!f.exists()){
+			try {
+				throw new FileNotFoundException("File cant be found!");
+			} catch (FileNotFoundException e) {				// TODO 自动生成的 catch 块
+				e.printStackTrace();//自己new自己抛出
+			}
+		}
 	}
 		
 }
