@@ -9,10 +9,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class TestExcepution4 {
+public class TestException4 {
 
 	public static void main(String[] args) {
-		String str = new TestExcepution4().openFile();
+		String str = new TestException4().openFile();
 		System.out.println(str);
 	}
 	
