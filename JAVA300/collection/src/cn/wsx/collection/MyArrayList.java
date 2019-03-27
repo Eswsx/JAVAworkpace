@@ -1,6 +1,7 @@
 package cn.wsx.collection;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.util.List;
 
 /**
@@ -15,6 +16,9 @@ public class MyArrayList/*implements List*/ {
 	
 	public int size(){
 		return size;
+	}
+	public boolean isEmpty(){
+		return size==0;
 	}
 	
 	public MyArrayList(){
@@ -41,15 +45,44 @@ public class MyArrayList/*implements List*/ {
 		elementDate[size++] = obj;
 		
 	}
+	public Object get(int index){
+		rangeCheck(index);
+		return elementDate[index];
+	}
+	public void remove(int index){
+		rangeCheck(index);
+		//删除指定位置的对象
+		int numMoved = size - index - 1;
+		if(numMoved > 0){
+			System.arraycopy(elementDate, index+1, elementDate, index, numMoved);
+			elementDate[--size] = null;
+		}
+	}
+	
+	private void rangeCheck(int index){
+		if(index<0 || index>=size){
+			try {
+				throw new Exception();
+			} catch (Exception e) {
+				// TODO 自动生成的 catch 块
+				e.printStackTrace();
+			}
+		}
+	}
+	public void remove(Object obj){
+		
+	}
+	
 	public static void main(String[] args) {
 		MyArrayList list  = new MyArrayList(3);
 		list.add("sssss");
 		list.add("sssss");
-		list.add("sssss");
-		list.add("sssss");
+		list.add("ss34ss233s");
+		list.add("ss333ss");
 		list.add("sssss");
 		list.add("sssss");
 		System.out.println(list.size());
+		System.out.println(list.get(6));
 
 		
 	}
