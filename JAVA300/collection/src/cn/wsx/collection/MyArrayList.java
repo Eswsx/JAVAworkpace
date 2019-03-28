@@ -36,12 +36,7 @@ public class MyArrayList/*implements List*/ {
 		elementDate  = new Object[initalCapacity];
 	}
 	public void add (Object obj){
-		//数组扩容与数据拷贝
-		if(size == elementDate.length){
-			Object[] newArray = new Object[size*2+1];
-			System.arraycopy(elementDate, 0, newArray, 0, elementDate.length);
-			elementDate = newArray;
-		}
+		ensureCheck();
 		elementDate[size++] = obj;
 		
 	}
@@ -58,6 +53,13 @@ public class MyArrayList/*implements List*/ {
 			elementDate[--size] = null;
 		}
 	}
+	public void add(int index ,Object obj){
+		rangeCheck(index);
+		ensureCheck();
+		System.arraycopy(elementDate, index, elementDate, index+1, size-index);
+		elementDate[index] = obj;
+		size++;
+	}
 	
 	private void rangeCheck(int index){
 		if(index<0 || index>=size){
@@ -69,8 +71,26 @@ public class MyArrayList/*implements List*/ {
 			}
 		}
 	}
+	private void ensureCheck(){
+		//数组扩容与数据拷贝
+		if(size == elementDate.length){
+			Object[] newArray = new Object[size*2+1];
+			System.arraycopy(elementDate, 0, newArray, 0, elementDate.length);
+			elementDate = newArray;
+		}
+	}
 	public void remove(Object obj){
-		
+		for(int i=0;i<size;i++){
+			if(get(i).equals(obj)){//注意底层调用的equals方法而不是==
+				remove(i);
+			}
+		}
+	}
+	public Object set(int index,Object obj){
+		rangeCheck(index);
+		Object oldValue = elementDate[index];
+		elementDate[index] = obj;
+		return oldValue;
 	}
 	
 	public static void main(String[] args) {
