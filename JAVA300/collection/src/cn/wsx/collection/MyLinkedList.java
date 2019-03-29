@@ -1,7 +1,6 @@
 package cn.wsx.collection;
 
 public class MyLinkedList /*implements List*/{
-
 	private Node first;
 	private Node last;
 	private int size;
@@ -30,16 +29,23 @@ public class MyLinkedList /*implements List*/{
 	
 	public Object get(int index){
 		rangeCheck(index);
-		Node temp = null;
-		if(first!=null){
-			temp = first;
-			for(int i=0;i<index;i++){
-				temp = temp.next;
-			}
+		Node temp = node(index);
+		if(temp!=null){
+			return temp.obj;
 		}
-		return temp.obj;
+		return null;
 	}
 	public void remove(int index){
+		Node temp = node(index);
+			if(temp!=null){
+				Node up = temp.previous;
+				Node down = temp.next;
+				up.next = down;
+				down.previous = up;
+		}
+		size--;
+	}
+	public Node node(int index){
 		Node temp = null;
 		if(first!=null){
 			temp = first;
@@ -47,8 +53,7 @@ public class MyLinkedList /*implements List*/{
 				temp = temp.next;
 			}
 		}
-		
-		
+		return temp;
 	}
 	
 	private void rangeCheck(int index){
@@ -61,12 +66,29 @@ public class MyLinkedList /*implements List*/{
 			}
 		}
 	}
+	public void add(int index,Object obj){
+		Node temp = node(index);
+		
+		Node newNode = new Node();
+		newNode.obj = obj;
+		
+		if(temp!= null){
+			Node up = temp.previous;
+			up.next = newNode;
+			newNode.previous = up;
+			
+			newNode.next = temp;
+			temp.previous = newNode;
+		}
+	}
 	
 	public static void main(String[] args) {
 		MyLinkedList list = new MyLinkedList();
 		list.add("aaaa");
 		list.add("bbbb");
-		System.out.println(list.size());
+		list.add("cccc");
+		list.remove(1);
+		System.out.println(list.get(1));
 	}
 }
 
