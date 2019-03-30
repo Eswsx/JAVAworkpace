@@ -80,14 +80,16 @@ public class MyLinkedList /*implements List*/{
 			newNode.next = temp;
 			temp.previous = newNode;
 		}
+		size++;
 	}
 	
 	public static void main(String[] args) {
 		MyLinkedList list = new MyLinkedList();
 		list.add("aaaa");
 		list.add("bbbb");
+		list.add(1,"BBBB");
 		list.add("cccc");
-		list.remove(1);
+//		list.remove(1);
 		System.out.println(list.get(1));
 	}
 }
