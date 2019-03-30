@@ -9,7 +9,10 @@ public class MyMap002 {
 	
 	public void put(Object key,Object value){
 		MyEntry e = new MyEntry(key, value);
-		int a = key.hashCode()%arr.length;
+		
+		int hash = key.hashCode();
+		hash = hash < 0 ? -hash : hash;
+		int a = hash%arr.length;
 		if(arr[a]==null){
 			MyLinkedList list = new MyLinkedList();
 			arr[a] = list;
@@ -29,7 +32,7 @@ public class MyMap002 {
 	public Object get(Object key){
 //		return arr[key.hashCode()%999];
 		int a = key.hashCode()%arr.length;
-		System.out.println(hashCode());
+//		System.out.println(hashCode());
 		if(arr[a]!=null){
 			MyLinkedList list = arr[a];
 			for(int i=0;i<list.size();i++){
@@ -41,7 +44,6 @@ public class MyMap002 {
 		}
 		return null;
 	}
-	
 	
 	public static void main(String[] args) {
 		MyMap002 m = new MyMap002();

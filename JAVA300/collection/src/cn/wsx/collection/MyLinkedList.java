@@ -48,9 +48,16 @@ public class MyLinkedList /*implements List*/{
 	public Node node(int index){
 		Node temp = null;
 		if(first!=null){
-			temp = first;
-			for(int i=0;i<index;i++){
-				temp = temp.next;
+			if(index <(size>>1)){
+				temp = first;
+				for(int i=0;i<index;i++){
+					temp = temp.next;
+				}
+			}else{
+				temp = last;
+				for(int i=size-1;i>index;i--){
+					temp = temp.previous;
+				}
 			}
 		}
 		return temp;
@@ -87,10 +94,12 @@ public class MyLinkedList /*implements List*/{
 		MyLinkedList list = new MyLinkedList();
 		list.add("aaaa");
 		list.add("bbbb");
-		list.add(1,"BBBB");
+		list.add(1,"BBsBB");
 		list.add("cccc");
+		list.add(1,"BBgfBB");
+		list.add("ccecc");
 //		list.remove(1);
-		System.out.println(list.get(1));
+		System.out.println(list.get(4));
 	}
 }
 
