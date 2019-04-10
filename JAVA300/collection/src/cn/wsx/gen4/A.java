@@ -1,0 +1,5 @@
+package cn.wsx.gen4;
+//∑∫–Õ¿‡
+public class A<T> {
+
+}
