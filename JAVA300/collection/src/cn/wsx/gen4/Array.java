@@ -20,6 +20,7 @@ public class Array {
 
 
 class MyArrayList<E>{
+//	E[]  cap = new E[10];//没有泛型数组
 	Object[] cap = new Object[10];
 	public void add(int idx ,E e){
 		cap[idx] = e;
