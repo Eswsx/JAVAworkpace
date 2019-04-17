@@ -6,7 +6,6 @@ import java.util.List;
 /**
  * ∞‡º∂
  * @author EsŒﬁ”Ô÷–
- *
  */
 public class ClassRoom {
 	private String no;
